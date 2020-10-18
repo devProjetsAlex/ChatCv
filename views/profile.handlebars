@@ -1,0 +1,69 @@
+<div class='row'>
+  <div class='col-sm'>
+    <div class='card' style="width: 18rem;">
+       <a href="/uploadImage">
+         <img src="{{user.image}}" class="card-img-top" alt="...">
+       </a>
+      <div class="body">        
+      </div>
+    </div>
+  </div>
+  <div class="col-1">
+
+  </div>
+
+  <div class="col-sm" id="profile-info">
+    <h5 class="card-title"> <i class="fa fa-user"></i> {{user.fullname}} </h5>
+    <p class="card-text"> <i class="fa fa-envelope"></i> {{user.email}} </p>
+    <p class="card-text"> <i class="fa fa-user-plus"> </i> <i class="fa fa-neuter"> </i>  {{user.searchingFor}} </p>
+    <p class="card-text"> <i class="fa fa-clipboard"> </i> <i class="fa fa-neuter"> </i>  {{user.about}} </p>
+    <hr>
+      <h3>
+        <i class="fa fa-edit" onclick="editProfile()"> Edit </i>  
+        <a href="/askToDelete"><i class=" fa fa-trash">Delete</i></a>
+      </h3> 
+  </div>
+
+
+ <div class="col-sm" id="profileEditor" style="display: none;" >
+
+    <form action="/updateProfile" method="POST">
+      <div class="form-group">
+        <input type="text" name="fullname" id="fullname" class="form-control"
+        value="{{user.fullname}}">
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="email" id="email" class="form-control" 
+        value="{{user.email}}">
+      </div>
+
+
+      <div class="form-group">
+        <select name="searchingFor" id="searchingFor" class="form-control">
+          <option value="Work"> Searching for a work.</option>
+          <option value="Employee"> Searching for a worker.</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+         <input type="text" name="about" id="about" value="{{user.about}}" class="form-control">
+      </div>
+    
+      <button type="submit"> 
+        Save
+      </button>
+    
+    </form>
+
+  </div>
+
+</div>
+
+<script>
+  function editProfile(){
+   document.getElementById('profile-info').style.display ='none';
+   document.getElementById('profileEditor').style.display ='block';
+}
+</script>
+
